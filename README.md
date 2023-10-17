@@ -7,9 +7,11 @@ Create Zoom Breakout Rooms automagically
 1. Copy `config.json.example` to `config.json`
 2. Adjust the parameters as needed, especially the `meetingId`, `meetingPassword` and `hostKey` values
 
-## Launch
+## Usage
 
 At the time of writing, this package needs at least [nodejs](https://nodejs.org/) v16
+
+You have to enter the designated meeting with your zoom-client and the meeting does not have a host-user assigned yet.
 
 To execute the creation of the breakout rooms, simply run these commands:
 
