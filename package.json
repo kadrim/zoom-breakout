@@ -1,0 +1,27 @@
+{
+  "name": "zoom-breakout",
+  "version": "1.0.0",
+  "description": "Create Zoom Breakout Rooms automagically",
+  "scripts": {
+    "breakout": "playwright test -c e2e/playwright.config.ts e2e/",
+    "breakout:headed": "npm run breakout -- --headed",
+    "breakout:ui": "npm run breakout -- --ui",
+    "breakout:show-trace": "playwright show-trace e2e/tracing/trace.zip",
+    "codegen": "playwright codegen"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kadrim/zoom-breakout.git"
+  },
+  "author": "kadrim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kadrim/zoom-breakout/issues"
+  },
+  "homepage": "https://github.com/kadrim/zoom-breakout#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.39.0",
+    "@types/node": "^20.8.6",
+    "playwright": "^1.39.0"
+  }
+}
