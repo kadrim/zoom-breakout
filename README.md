@@ -11,7 +11,7 @@ Create Zoom Breakout Rooms automagically
 
 At the time of writing, this package needs at least [nodejs](https://nodejs.org/) v16
 
-You have to enter the designated meeting with your zoom-client and the meeting does not have a host-user assigned yet.
+You have to enter the designated meeting with your zoom-client and the meeting must not have a host-user assigned yet. This step is important as the meeting will otherwise be terminated after the rooms have been created by the bot.
 
 To execute the creation of the breakout rooms, simply run these commands:
 

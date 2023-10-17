@@ -8,7 +8,7 @@ const config = {
       headless: true,
       viewport: { width: 1280, height: 720 },
       launchOptions: {
-        slowMo: 1000,
+        slowMo: 50,
       },
       trace: 'on',
     },

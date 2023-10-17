@@ -41,6 +41,7 @@ test.describe('Create Breakout Rooms', async () => {
     let meetingId : string = config.meetingId;
     meetingId = meetingId.replace(/\s/g, '');
 
+    // join the meeting
     await page.goto(`https://zoom.us/wc/join/${meetingId}`);
     await page.getByRole('button', { name: 'Close' }).click();
     await page.getByRole('button', { name: 'I Agree' }).click();
@@ -49,7 +50,41 @@ test.describe('Create Breakout Rooms', async () => {
     await page.getByLabel('Your Name').click();
     await page.getByLabel('Your Name').fill('zoom-breakout-bot');
     await page.getByRole('button', { name: 'Join', exact: true }).click();
+
+    // claim the host
     await page.getByRole('tab', { name: 'Computer Audio' }).click();
-    await page.getByLabel('open the participants list pane,[1] particpants').click();
+    await page.getByLabel(/open the participants list pane,\[\d+\] particpants/).click();
+    await page.getByRole('button', { name: 'Claim Host' }).click();
+    await page.getByPlaceholder('Enter 6-10 digit host key').click();
+    await page.getByPlaceholder('Enter 6-10 digit host key').fill(config.hostKey);
+    await page.getByRole('button', { name: 'Claim Host' }).click();
+
+    // create rooms
+    await page.getByLabel('More meeting control').click();
+    await page.getByLabel('Breakout Rooms').click();
+    await page.getByText('Let participants choose room').click();
+    await page.getByLabel('Create  1  breakout rooms').click();
+    await page.getByLabel('Create  1  breakout rooms').fill(String(rooms.length));
+    await page.getByRole('button', { name: 'Create' }).click();
+
+    // rename rooms
+    for(let index = 0; index < rooms.length; index++) {
+      const room = rooms[index];
+      const oldRoomName = 'Room ' + (index + 1);
+      console.log(`Changing Room-Name from ${oldRoomName} to ${room}`);
+
+      await page.getByText(oldRoomName).click();
+      await page.getByRole('button', { name: 'Rename' }).click();
+      await page.getByLabel('Breakout Room Name').click();
+      await page.getByLabel('Breakout Room Name').press('Shift+Home');
+      await page.getByLabel('Breakout Room Name').fill(room);
+      await page.getByLabel('Rename', { exact: true }).getByRole('button', { name: 'Rename' }).click();
+    }
+
+    // open all rooms
+    await page.getByRole('button', { name: 'Open All Rooms' }).click();
+    await page.locator('div').filter({ hasText: /^Breakout Rooms - In Progress$/ }).first().click();
+    await page.getByRole('button', { name: 'Close', exact: true }).click();
+  
   });
 });
