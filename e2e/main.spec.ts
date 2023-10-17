@@ -1,9 +1,37 @@
 import { test, expect } from '@playwright/test';
 import { exit } from 'process';
+import { faker } from '@faker-js/faker';
 
 const config = require('../config.json');
+const rooms = [];
+
+config.rooms.forEach(room => {
+  if(room.type == 'dynamic') {
+    let randomName;
+    switch(room.generator) {
+      case 'airplane':
+        randomName = faker.airline.airplane().name;
+        break;
+      case 'person':
+        randomName = faker.person.fullName();
+        break;
+      case 'songName':
+        randomName = faker.music.songName();
+        break;
+      default:
+        randomName = 'undefined generator';
+        break;
+    }
+    rooms.push(`${room.prefix}${randomName}${room.suffix}`);
+  } else {
+    rooms.push(room.name);
+  }
+});
 
 if(process.env.DRYRUN != null) {
+  rooms.forEach(room => {
+    console.log(`Room-Name: ${room}`);
+  });
   console.log('Dryrun enabled, exiting now.');
   exit(0);
 }

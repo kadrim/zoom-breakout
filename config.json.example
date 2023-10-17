@@ -1,5 +1,29 @@
 {
     "meetingId": "123 456 7890",
     "meetingPassword": "example pass",
-    "hostKey": "4711"
+    "hostKey": "4711",
+    "rooms": [
+        {
+            "type": "dynamic",
+            "prefix": "1. ",
+            "suffix": "",
+            "generator": "airplane"
+        },
+        {
+            "type": "dynamic",
+            "prefix": "",
+            "suffix": " (2)",
+            "generator": "person"
+        },
+        {
+            "type": "dynamic",
+            "prefix": "",
+            "suffix": "",
+            "generator": "songName"
+        },
+        {
+            "type": "static",
+            "name": "Nirvana"
+        }
+    ]
 }
