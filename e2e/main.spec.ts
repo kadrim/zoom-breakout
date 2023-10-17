@@ -73,12 +73,13 @@ test.describe('Create Breakout Rooms', async () => {
       const oldRoomName = 'Room ' + (index + 1);
       console.log(`Changing Room-Name from ${oldRoomName} to ${room}`);
 
-      await page.getByText(oldRoomName).click();
+      await page.getByText(oldRoomName, { exact: true }).click();
       await page.getByRole('button', { name: 'Rename' }).click();
       await page.getByLabel('Breakout Room Name').click();
       await page.getByLabel('Breakout Room Name').press('Shift+Home');
       await page.getByLabel('Breakout Room Name').fill(room);
       await page.getByLabel('Rename', { exact: true }).getByRole('button', { name: 'Rename' }).click();
+      await page.keyboard.press('ArrowDown');
     }
 
     // open all rooms
