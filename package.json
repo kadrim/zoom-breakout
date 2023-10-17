@@ -4,9 +4,10 @@
   "description": "Create Zoom Breakout Rooms automagically",
   "scripts": {
     "breakout": "playwright test -c e2e/playwright.config.ts e2e/",
+    "breakout:dryrun": "DRYRUN=1 npm run breakout",
     "breakout:headed": "npm run breakout -- --headed",
     "breakout:ui": "npm run breakout -- --ui",
-    "breakout:show-trace": "playwright show-trace e2e/tracing/trace.zip",
+    "breakout:show-trace": "playwright show-trace",
     "codegen": "playwright codegen"
   },
   "repository": {

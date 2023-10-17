@@ -1,6 +1,12 @@
 import { test, expect } from '@playwright/test';
+import { exit } from 'process';
 
 const config = require('../config.json');
+
+if(process.env.DRYRUN != null) {
+  console.log('Dryrun enabled, exiting now.');
+  exit(0);
+}
 
 test.describe('Create Breakout Rooms', async () => {
   test('Actions', async ({ page }) => {
