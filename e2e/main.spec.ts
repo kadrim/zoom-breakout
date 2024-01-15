@@ -52,15 +52,15 @@ test.describe('Create Breakout Rooms', async () => {
     await page.getByRole('button', { name: 'Join', exact: true }).click();
 
     // claim the host
-    await page.getByRole('tab', { name: 'Computer Audio' }).click();
-    await page.getByLabel(/open the participants list pane,\[\d+\] particpants/).click();
+    await page.getByLabel('close').click();
+    await page.getByLabel(/open the participants list pane,\[\d+\] particpants/).dblclick();
     await page.getByRole('button', { name: 'Claim Host' }).click();
     await page.getByPlaceholder('Enter 6-10 digit host key').click();
     await page.getByPlaceholder('Enter 6-10 digit host key').fill(config.hostKey);
     await page.getByRole('button', { name: 'Claim Host' }).click();
 
     // create rooms
-    await page.getByLabel('More meeting control').click();
+    await page.getByLabel('More meeting control').dblclick();
     await page.getByLabel('Breakout Rooms').click();
     await page.getByText('Let participants choose room').click();
     await page.getByLabel('Create  1  breakout rooms').click();
