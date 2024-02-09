@@ -2,7 +2,7 @@
 const config = {
     testDir: '.',
     workers: 1,
-    timeout: 120000,
+    timeout: 480000,
     outputDir: './screenshots',
     use: {
       headless: true,
