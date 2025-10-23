@@ -6,7 +6,7 @@ const config = {
     outputDir: './screenshots',
     use: {
       headless: true,
-      viewport: { width: 1280, height: 720 },
+      viewport: { width: 1800, height: 800 },
       launchOptions: {
         slowMo: 50,
       },

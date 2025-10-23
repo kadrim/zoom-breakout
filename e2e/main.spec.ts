@@ -52,7 +52,6 @@ test.describe('Create Breakout Rooms', async () => {
     await page.getByRole('button', { name: 'Join', exact: true }).click();
 
     // claim the host
-    await page.getByLabel('close').click();
     await page.getByLabel(/open the participants list pane,\[\d+\] particpants/).dblclick();
     await page.getByRole('button', { name: 'Claim Host' }).click();
     await page.getByPlaceholder('Enter 6-10 digit host key').click();
